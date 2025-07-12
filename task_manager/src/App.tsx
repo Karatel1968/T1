@@ -1,9 +1,17 @@
 import './App.css'
+import TaskItem from './components/TaskItem/TaskItem'
+import type { Task } from './AboutTask/AboutTask'
 
 function App() {
 
+  enum task{
+    title = "title"
+  }
+
   return (
-    <div></div>
+    <div>
+      <TaskItem title={task.title}/>
+    </div>
   )
 }
 
