@@ -1,18 +1,13 @@
-import './App.css'
-import TaskItem from './components/TaskItem/TaskItem'
-import type { Task } from './AboutTask/AboutTask'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { TaskProvider } from './TaskContext';
+import { ConfigProvider } from 'antd';
+import TaskList from './components/TaskList/TaskList';
+//import TaskDetails from './components/TaskDetails/TaskDetails';
+import './App.css';
 
 function App() {
 
-  enum task{
-    title = "title"
-  }
-
-  return (
-    <div>
-      <TaskItem title={task.title}/>
-    </div>
-  )
+  
 }
 
 export default App
