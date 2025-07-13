@@ -1,13 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { RouterProvider } from 'react-router-dom';
 import { TaskProvider } from './TaskContext';
+import { router } from './routes';
 import { ConfigProvider } from 'antd';
-import TaskList from './components/TaskList/TaskList';
-//import TaskDetails from './components/TaskDetails/TaskDetails';
-import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#1890ff',
+        },
+      }}
+    >
+      <TaskProvider>
+        <RouterProvider router={router} />
+      </TaskProvider>
+    </ConfigProvider>
+  );
+};
 
-  
-}
-
-export default App
+export default App;

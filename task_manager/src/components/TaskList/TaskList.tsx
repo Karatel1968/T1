@@ -110,7 +110,7 @@ const TaskList: React.FC = () => {
                 </Form.Item>
                 </Form>
             </Modal>
-            <Flex vertical={value ==='vertical'}>
+            <Flex style={{ width: 1000 }} vertical={value ==='vertical'}>
                 {tasks.map(task => (
                     <TaskItem task={task}/>
                 ))}

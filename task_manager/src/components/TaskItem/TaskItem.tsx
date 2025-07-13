@@ -2,7 +2,7 @@ import type { Task } from "../../AboutTask/AboutTask"
 import { Avatar, Card } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider, Space } from 'antd';
-import { createStyles } from 'antd-style';
+//import { createStyles } from 'antd-style';
 import { useNavigate } from 'react-router-dom';
 import {Tag} from "antd";
 import {
@@ -43,13 +43,13 @@ const TaskItem: React.FC<{task: Task}> = ({task}) => {
   };
 
     return(
-        <Card
+        <Card style={{ width: 300 }}
             title={task.title}
             extra={
                 <Button
                     type="text"
                     icon={<AntDesignOutlined />}
-                    onClick={() => navigate(``)}
+                    onClick={() => navigate(`/tasks/${task.id}`)}
                 >
                 Редактировать
                 </Button>

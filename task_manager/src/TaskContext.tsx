@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
-import { Task, TaskCategory, TaskStatus, TaskPriority } from "../../AboutTask/AboutTask";
+import { TaskCategory, TaskStatus, TaskPriority } from "./AboutTask/AboutTask";
+import type { Task } from "./AboutTask/AboutTask";
 
 const TaskContext = createContext({
   tasks: [] as Task[],
