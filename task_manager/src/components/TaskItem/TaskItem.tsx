@@ -49,7 +49,7 @@ const TaskItem: React.FC<{task: Task}> = ({task}) => {
                 <Button
                     type="text"
                     icon={<AntDesignOutlined />}
-                    onClick={() => navigate(`/tasks/${task.id}`)}
+                    onClick={() => navigate(`/task/${task.id}`)}
                 >
                 Редактировать
                 </Button>

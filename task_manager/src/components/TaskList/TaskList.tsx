@@ -56,7 +56,7 @@ const TaskList: React.FC = () => {
                         onClick={showModal}
                         style={{ marginBottom: 16 }}
                     >
-                        Add Task
+                        Добаавить задачу
                     </Button>
                     <Modal
                         title="Новая задача"
