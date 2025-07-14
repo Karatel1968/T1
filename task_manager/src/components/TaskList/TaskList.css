@@ -1,0 +1,21 @@
+.task-list{
+    width: 100%;
+    padding: 1rem; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+}
+
+.container{
+    background-color: white;
+    width: 70%;
+    padding: 3%;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 16px 14px 8px rgba(0, 0, 0, 0.1);
+} 
+
+.section-with-tasks{
+    align-items: center;
+    display: flex;
+}
