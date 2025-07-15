@@ -25,7 +25,7 @@
 ## 🛠 Установка
 
 1. Клонируйте репозиторий:
-git clone https://github.com/ваш-username/task-manager.git
+git clone https://github.com/Karatel1968/T1/task_manager.git
 
 2. Установите зависимости:
 npm install
