@@ -1,8 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import { Flex, Space } from 'antd';
 import TaskItem from "../TaskItem/TaskItem";
 import { TaskCategory, TaskStatus, TaskPriority } from "../../AboutTask/AboutTask";
-import type { Task } from "../../AboutTask/AboutTask";
 import React from 'react';
 import { useTasks } from "../../TaskContext";
 import {PlusOutlined} from '@ant-design/icons';

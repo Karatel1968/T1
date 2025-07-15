@@ -1,8 +1,7 @@
 import type { Task } from "../../AboutTask/AboutTask"
 import { Avatar, Card } from 'antd';
-import { AntDesignOutlined } from '@ant-design/icons';
-import { Button, ConfigProvider, Space } from 'antd';
-//import { createStyles } from 'antd-style';
+import { EditOutlined  } from '@ant-design/icons';
+import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import {Tag} from "antd";
 import {
@@ -43,16 +42,15 @@ const TaskItem: React.FC<{task: Task}> = ({task}) => {
   };
 
     return(
-        <Card style={{ width: 300 }}
+        <Card style={{ width: 320 }}
             title={task.title}
             extra={
                 <Button
                     type="text"
-                    icon={<AntDesignOutlined />}
+                    icon={<EditOutlined />}
                     onClick={() => navigate(`/task/${task.id}`)}
-                >
-                Редактировать
-                </Button>
+                />
+                
             }
             actions={[<Tag color="default">{task.category}</Tag>,
             <Tag icon={getStatusIcon()} color={getStatusColor()}>{task.status}</Tag>,
