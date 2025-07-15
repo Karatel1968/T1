@@ -19,7 +19,7 @@
   ![Vite](https://img.shields.io/badge/Vite-4+-blue?logo=vite)
   
 - **State Management**: Context API
-- 
+
 - **Routing**: React Router v6
 
 ## 🛠 Установка
