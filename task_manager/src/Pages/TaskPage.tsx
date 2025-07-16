@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskDetails from '../components/TaskDetails/TaskDetails';
+import TaskDetails from '../widgets/TaskDetails/TaskDetails';
 
 const TaskPage: React.FC = () => {
   return <TaskDetails />;
