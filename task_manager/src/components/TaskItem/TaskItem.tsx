@@ -62,6 +62,7 @@ const TaskItem: React.FC<{task: Task}> = ({task}) => {
                 description={task.description}
             />
         </Card>
+        
     )
 }
 
