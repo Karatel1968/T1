@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, Select, message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useTasks } from "../../TaskContext";
+import { useTasks } from '../../app/providers/TaskProvider/TaskProvider';
 import { TaskCategory, TaskStatus, TaskPriority } from "../../AboutTask/AboutTask";
 
 const { TextArea } = Input;

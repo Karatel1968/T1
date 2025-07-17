@@ -1,13 +1,8 @@
-import React, { createContext, useState} from 'react';
-import { TaskCategory, TaskStatus, TaskPriority } from "./AboutTask/AboutTask";
-import type { Task } from "./AboutTask/AboutTask";
-
-const TaskContext = createContext({
-  tasks: [] as Task[],
-  addTask: (task: Omit<Task, 'id'>) => {},
-  updateTask: (id: string, changes: Partial<Task>) => {},
-  deleteTask: (id: string) => {}
-});
+import type { Task } from "../../../AboutTask/AboutTask";
+import { TaskCategory, TaskStatus, TaskPriority } from "../../../AboutTask/AboutTask";
+import { TaskContext } from "./model";
+import { useState } from "react";
+import React from "react";
 
 export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
   const [tasks, setTasks] = useState<Task[]>([
