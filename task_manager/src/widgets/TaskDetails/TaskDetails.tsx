@@ -3,6 +3,8 @@ import { Button, Form, Input, Select, message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTasks } from '../../app/providers/TaskProvider/TaskProvider';
 import { TaskCategory, TaskStatus, TaskPriority } from "../../AboutTask/AboutTask";
+import { FormItem } from './ui/FormItem';
+import type{ FormFieldProps } from './model';
 
 const { TextArea } = Input;
 
@@ -30,7 +32,7 @@ const TaskDetails: React.FC = () => {
     }
     navigate('/');
   };
-
+    
   return (
     <div style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
       <h2>{task ? 'Редактировать задачу' : 'Новая задача'}</h2>
@@ -45,13 +47,18 @@ const TaskDetails: React.FC = () => {
           priority: TaskPriority.Medium
         }}
       >
-        <Form.Item name="title" label="Название" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
+        <FormItem prop=
+        {{ name: "title", label: "Название", type: "input", required: true }} 
+        />
 
-        <Form.Item name="description" label="Описание">
-          <TextArea rows={4} />
-        </Form.Item>
+        <FormItem prop=
+        {{ name: "description", label: "Описание", type: "textarea", required: false}} 
+        />
+
+        
+        {/*<FormItem prop=
+        {{ name: "category", label: "Категория", type: "select", required: false, options: {}}}
+        />*/}
 
         <Form.Item name="category" label="Категория">
           <Select>
