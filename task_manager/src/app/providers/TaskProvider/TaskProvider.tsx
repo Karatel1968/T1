@@ -1,5 +1,5 @@
-import type { Task } from "../../../AboutTask/AboutTask";
-import { TaskCategory, TaskStatus, TaskPriority } from "../../../AboutTask/AboutTask";
+import type { Task } from "../../../shared/model/AboutTask";
+import { TaskCategory, TaskStatus, TaskPriority } from "../../../shared/model/AboutTask";
 import { TaskContext } from "./model";
 import { useState } from "react";
 import React from "react";

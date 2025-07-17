@@ -1,4 +1,4 @@
-import type { Task } from "../../AboutTask/AboutTask"
+import type { Task } from "../../shared/model/AboutTask"
 import { Avatar, Card } from 'antd';
 import { EditOutlined  } from '@ant-design/icons';
 import { Button } from 'antd';

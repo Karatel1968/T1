@@ -1,5 +1,5 @@
 import React, { createContext} from 'react';
-import type { Task } from '../../../AboutTask/AboutTask';
+import type { Task } from '../../../shared/model/AboutTask';
 
 export const TaskContext = createContext({
   tasks: [] as Task[],
