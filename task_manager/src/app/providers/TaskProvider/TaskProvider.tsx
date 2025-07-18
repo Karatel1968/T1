@@ -3,29 +3,42 @@ import { TaskCategory, TaskStatus, TaskPriority } from "../../../shared/model/Ab
 import { TaskContext } from "./model";
 import { useState } from "react";
 import React from "react";
+import { loadFromLocalStorage } from "../../../shared/api/storage/storage";
+import { useEffect } from "react";
+import { saveToLocalStorage } from "../../../shared/api/storage/storage";
+
+const TASKS_STORAGE_KEY = 'task_manager_tasks';
 
 export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
-  const [tasks, setTasks] = useState<Task[]>([
-    {
+  
+  const [tasks, setTasks] = useState<Task[]>(() => {
+
+    return loadFromLocalStorage<Task[]>(TASKS_STORAGE_KEY) || [
+      {
         id: '1',
-        title: '...',
-        description: '...',
-        category: TaskCategory.Bug,
+        title: 'Пример задачи',
+        description: 'описание',
         status: TaskStatus.Todo,
-        priority: TaskPriority.High,
-    }
-  ]);
+        priority: TaskPriority.Medium,
+        category: TaskCategory.Feature,
+      }
+    ];
+  });
+
+  useEffect(() => {
+    saveToLocalStorage(TASKS_STORAGE_KEY, tasks);
+  }, [tasks]);
 
   const addTask = (task: Omit<Task, 'id'>) => {
-    setTasks([...tasks, { ...task, id: Date.now().toString() }]);
+    setTasks(prev => [...prev, { ...task, id: Date.now().toString() }]);
   };
 
   const updateTask = (id: string, changes: Partial<Task>) => {
-    setTasks(tasks.map(tasks => tasks.id === id ? { ...tasks, ...changes } : tasks));
+    setTasks(prev => prev.map(tasks => tasks.id === id ? { ...tasks, ...changes } : tasks));
   };
 
   const deleteTask = (id: string) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(prev => prev.filter(task => task.id !== id));
   };
 
   return (
