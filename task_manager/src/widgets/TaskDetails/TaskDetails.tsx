@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Form, Input, Select, message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useTasks } from '../../app/providers/TaskProvider/TaskProvider';
-import { TaskCategory, TaskStatus, TaskPriority } from "../../shared/model/AboutTask";
+import { useTasks } from '@/app/providers/TaskProvider/TaskProvider';
+import { TaskCategory, TaskStatus, TaskPriority } from "@shared/model/AboutTask";
 import { FormItem } from './ui/FormItem';
 import type{ FormFieldProps } from './model';
 

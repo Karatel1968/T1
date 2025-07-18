@@ -1,9 +1,9 @@
-import type { Task } from "../../shared/model/AboutTask"
+import type { Task } from '@/shared/model/AboutTask';
 import { Avatar, Card } from 'antd';
 import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useTasks } from "../../app/providers/TaskProvider/TaskProvider";
+import { useTasks } from '@/app/providers/TaskProvider/TaskProvider';
 import { useState } from "react";
 import {Modal} from "antd";
 import {Tag} from "antd";

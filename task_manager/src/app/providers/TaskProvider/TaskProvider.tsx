@@ -1,9 +1,9 @@
-import type { Task } from "../../../shared/model/AboutTask";
-import { TaskCategory, TaskStatus, TaskPriority } from "../../../shared/model/AboutTask";
+import type { Task } from '@/shared/model/AboutTask';
+import { TaskCategory, TaskStatus, TaskPriority } from "@shared/model/AboutTask";
 import { TaskContext } from "./model";
 import { useState } from "react";
 import React from "react";
-import { loadFromLocalStorage } from "../../../shared/api/storage/storage";
+import { loadFromLocalStorage } from '../../../shared/api/storage/storage';
 import { useEffect } from "react";
 import { saveToLocalStorage } from "../../../shared/api/storage/storage";
 

@@ -19,5 +19,21 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    settings: {
+      'import/resolver': {
+        alias: {
+          map: [
+            ['@', path.resolve(__dirname, './src')],
+            ['@app', path.resolve(__dirname, './src/app')],
+            ['@entities', path.resolve(__dirname, './src/Entities')],
+            ['@features', path.resolve(__dirname, './src/features')],
+            ['@widgets', path.resolve(__dirname, './src/widgets')],
+            ['@pages', path.resolve(__dirname, './src/Pages')],
+            ['@shared', path.resolve(__dirname, './src/shared')],
+          ],
+          extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+        }
+      }
+    },
   },
 ])

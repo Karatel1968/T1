@@ -1,8 +1,8 @@
 import { Flex, Space } from 'antd';
-import TaskItem from "../../Entities/TaskItem/TaskItem";
-import { TaskCategory, TaskStatus, TaskPriority } from "../../shared/model/AboutTask";
+import TaskItem from '@/Entities/TaskItem/TaskItem';
+import { TaskCategory, TaskStatus, TaskPriority } from "@shared/model/AboutTask";
 import React from 'react';
-import { useTasks } from '../../app/providers/TaskProvider/TaskProvider';
+import { useTasks } from '@/app/providers/TaskProvider/TaskProvider';
 import {PlusOutlined} from '@ant-design/icons';
 import { Button, Form, Input, Select, Modal } from 'antd';
 import { useState } from 'react';
