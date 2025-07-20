@@ -1,5 +1,5 @@
 import type { FormFieldProps } from "../model"
-import { Form, Input, Select, message } from 'antd';
+import { Form, Input, Select} from 'antd';
 
 const { TextArea } = Input;
 

@@ -1,12 +1,11 @@
 import React from 'react';
-import { Button, Form, Input, Select, message } from 'antd';
+import { Button, Form, Select, message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTasks } from '@/app/providers/TaskProvider/TaskProvider';
 import { TaskCategory, TaskStatus, TaskPriority } from "@shared/model/AboutTask";
 import { FormItem } from './ui/FormItem';
-import type{ FormFieldProps } from './model';
 
-const { TextArea } = Input;
+//const { TextArea } = Input;
 
 const TaskDetails: React.FC = () => {
   const { id } = useParams();

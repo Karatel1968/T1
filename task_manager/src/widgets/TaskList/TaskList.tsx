@@ -17,6 +17,8 @@ const TaskList: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [value, setValue] = React.useState<string>('horizontal');
 
+    setValue;
+
     const showModal = () => {
     setIsModalVisible(true);
   };
