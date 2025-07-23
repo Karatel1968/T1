@@ -9,30 +9,17 @@ import { saveToLocalStorage } from "../../../shared/api/storage/storage";
 import { 
   fetchTasks, 
   createTask as apiCreateTask,
-  updateTask as apiUpdateTask
+  updateTask as apiUpdateTask,
+  deleteTask as apiDeleteTask
 } from '@shared/api/TaskApi'
 
-const TASKS_STORAGE_KEY = 'task_manager_tasks';
 
 export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
   
   const [error, setError] = useState<string | null>(null);
-  const [tasks, setTasks] = useState<Task[]>([])/*() => {
-
-    return loadFromLocalStorage<Task[]>(TASKS_STORAGE_KEY) || [
-      {
-        id: '1',
-        title: 'Пример задачи',
-        description: 'описание',
-        status: TaskStatus.Todo,
-        priority: TaskPriority.Medium,
-        category: TaskCategory.Feature,
-      }
-    ];
-  });*/
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
-    //saveToLocalStorage(TASKS_STORAGE_KEY, tasks);
     const loadTasks = async () => {
       try {
           const loadedTasks = await fetchTasks();
@@ -44,10 +31,9 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
       };
 
     loadTasks();
-  }, [/*tasks*/]);
+  }, []);
 
   const addTask = async (task: Omit<Task, 'id'>) => {
-    //setTasks(prev => [...prev, { ...task, id: Date.now().toString() }]);
     try {
       const newTask = await apiCreateTask(task);
       setTasks(prev => [...prev, newTask]);
@@ -58,7 +44,6 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const updateTask = async (id: string, changes: Partial<Task>) => {
-    //setTasks(prev => prev.map(tasks => tasks.id === id ? { ...tasks, ...changes } : tasks));
     try {
       const updatedTask = await apiUpdateTask(id, changes);
       setTasks(prev => prev.map(task => task.id === id ? updatedTask : task));
@@ -68,8 +53,14 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const deleteTask = (id: string) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
+  const deleteTask = async (id: string) => {
+    try {
+      await apiDeleteTask(id);
+      setTasks(prev => prev.filter(task => task.id !== id));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete task');
+      throw err;
+    }
   };
 
   return (

@@ -31,3 +31,10 @@ export const updateTask = async (id: string, changes: Partial<Task>): Promise<Ta
   if (!response.ok) throw new Error('Failed to update task');
   return response.json();
 };
+
+export const deleteTask = async (id: string): Promise<void> => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: 'DELETE',
+  });
+  if (!response.ok) throw new Error('Failed to delete task');
+};
