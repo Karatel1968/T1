@@ -15,5 +15,13 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/Pages'),
       '@shared': path.resolve(__dirname, './src/shared'),
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      }
+    }
   }
 })
