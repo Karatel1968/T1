@@ -6,12 +6,17 @@ import React from "react";
 import { loadFromLocalStorage } from '../../../shared/api/storage/storage';
 import { useEffect } from "react";
 import { saveToLocalStorage } from "../../../shared/api/storage/storage";
+import { 
+  fetchTasks, 
+  createTask as apiCreateTask
+} from '@shared/api/TaskApi'
 
 const TASKS_STORAGE_KEY = 'task_manager_tasks';
 
 export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
   
-  const [tasks, setTasks] = useState<Task[]>(() => {
+  const [error, setError] = useState<string | null>(null);
+  const [tasks, setTasks] = useState<Task[]>([])/*() => {
 
     return loadFromLocalStorage<Task[]>(TASKS_STORAGE_KEY) || [
       {
@@ -23,14 +28,32 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
         category: TaskCategory.Feature,
       }
     ];
-  });
+  });*/
 
   useEffect(() => {
-    saveToLocalStorage(TASKS_STORAGE_KEY, tasks);
-  }, [tasks]);
+    //saveToLocalStorage(TASKS_STORAGE_KEY, tasks);
+    const loadTasks = async () => {
+      try {
+          const loadedTasks = await fetchTasks();
+          setTasks(loadedTasks);
+        } catch (err) {
+          setError(err instanceof Error ? err.message : 'Unknown error');
+        } finally {
+        }
+      };
 
-  const addTask = (task: Omit<Task, 'id'>) => {
-    setTasks(prev => [...prev, { ...task, id: Date.now().toString() }]);
+    loadTasks();
+  }, [/*tasks*/]);
+
+  const addTask = async (task: Omit<Task, 'id'>) => {
+    //setTasks(prev => [...prev, { ...task, id: Date.now().toString() }]);
+    try {
+      const newTask = await apiCreateTask(task);
+      setTasks(prev => [...prev, newTask]);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to add task');
+      throw err;
+    }
   };
 
   const updateTask = (id: string, changes: Partial<Task>) => {
