@@ -8,7 +8,8 @@ import { useEffect } from "react";
 import { saveToLocalStorage } from "../../../shared/api/storage/storage";
 import { 
   fetchTasks, 
-  createTask as apiCreateTask
+  createTask as apiCreateTask,
+  updateTask as apiUpdateTask
 } from '@shared/api/TaskApi'
 
 const TASKS_STORAGE_KEY = 'task_manager_tasks';
@@ -56,8 +57,15 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const updateTask = (id: string, changes: Partial<Task>) => {
-    setTasks(prev => prev.map(tasks => tasks.id === id ? { ...tasks, ...changes } : tasks));
+  const updateTask = async (id: string, changes: Partial<Task>) => {
+    //setTasks(prev => prev.map(tasks => tasks.id === id ? { ...tasks, ...changes } : tasks));
+    try {
+      const updatedTask = await apiUpdateTask(id, changes);
+      setTasks(prev => prev.map(task => task.id === id ? updatedTask : task));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to update task');
+      throw err;
+    }
   };
 
   const deleteTask = (id: string) => {

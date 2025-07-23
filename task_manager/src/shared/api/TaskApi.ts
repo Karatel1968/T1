@@ -19,3 +19,15 @@ export const createTask = async (task: Omit<Task, 'id'>): Promise<Task> => {
   if (!response.ok) throw new Error('Failed to create task');
   return response.json();
 };
+
+export const updateTask = async (id: string, changes: Partial<Task>): Promise<Task> => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(changes),
+  });
+  if (!response.ok) throw new Error('Failed to update task');
+  return response.json();
+};
